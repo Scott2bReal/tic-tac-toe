@@ -1,0 +1,14 @@
+#grid-col {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.cell {
+  background: LightBlue;
+  border: 1px solid Blue;
+  padding: 10px;
+  text-align: center;
+}
