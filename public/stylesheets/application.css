@@ -1,9 +1,7 @@
-#grid-col {
+.grid {
   display: grid;
-  grid-template-columns: auto auto auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  grid-template-rows: 200px 200px 200px;
+  grid-template-columns: 200px 200px 200px;
 }
 
 div.cell {
@@ -11,4 +9,9 @@ div.cell {
   border: 1px solid Blue;
   padding: 10px;
   text-align: center;
+}
+
+body {
+  display: flex;
+  justify-content: center;
 }
