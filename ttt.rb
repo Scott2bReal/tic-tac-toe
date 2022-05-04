@@ -16,7 +16,11 @@ before do
   @computer = @game.computer
 end
 
-# Display home screen
+# Display game screen
 get '/' do
+  redirect '/play'
+end
+
+get '/play' do
   erb :game
 end
