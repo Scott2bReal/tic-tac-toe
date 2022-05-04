@@ -5,13 +5,23 @@
 }
 
 .cell {
-  background: LightBlue;
-  border: 1px solid Blue;
+  border: 1px solid #a89984;
   padding: 10px;
   text-align: center;
 }
 
 body {
   display: flex;
+  background-color: #282828;
   justify-content: center;
+}
+
+button {
+  background: transparent;
+  border: none;
+  outline: none;
+  display: block;
+  height: 200px;
+  width: 200px;
+  cursor: pointer;
 }
