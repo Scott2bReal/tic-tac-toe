@@ -24,3 +24,7 @@ end
 get '/play' do
   erb :game
 end
+
+post '/play/:square' do
+  square = params[:square]
+end

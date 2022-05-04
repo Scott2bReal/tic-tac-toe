@@ -6,7 +6,7 @@
 
 .cell {
   border: 1px solid #a89984;
-  padding: 10px;
+  /* padding: 10px; */
   text-align: center;
 }
 
@@ -24,4 +24,29 @@ button {
   height: 200px;
   width: 200px;
   cursor: pointer;
+}
+
+/* Get rid of outside borders of board */
+#square-1,
+#square-2,
+#square-3 {
+  border-top: none;
+}
+
+#square-7,
+#square-8,
+#square-9 {
+  border-bottom: none;
+}
+
+#square-1,
+#square-4,
+#square-7 {
+  border-left: none;
+}
+
+#square-3,
+#square-6,
+#square-9 {
+  border-right: none;
 }

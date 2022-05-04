@@ -1,9 +1,9 @@
-<form method='post' action='/play'>
-  <div class='board'>
-    <% @board.squares.each do |num, marker| %>
+<div class='board'>
+  <% @board.squares.each do |num, marker| %>
+    <form method='post' action='/play/<%= num %>'>
       <div class="cell" id='square-<%= num %>'>
         <button type='submit'><%= marker %></button>
       </div>
-    <% end %>
-  </div>
-</form>
+    </form>
+  <% end %>
+</div>
