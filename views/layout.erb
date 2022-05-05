@@ -10,6 +10,11 @@
   <body>
     <header>
       <h1>Tic Tac Toe</h1>
+      <% if session[:error] %>
+        <p><%= session.delete(:error) %></p>
+      <% elsif session[:success] %>
+        <p><%= session.delete(:success) %></p>
+      <% end %>
     </header>
     <main><%= yield %></main>
   </body>

@@ -18,6 +18,14 @@ class Board
     @squares.keys.select { |key| @squares[key].unmarked? }
   end
 
+  def [](square_num)
+    @squares.fetch(square_num)
+  end
+
+  def []=(square_num, marker)
+    self[square_num].marker = marker
+  end
+
   def full?
     unmarked_keys.empty?
   end
@@ -54,7 +62,7 @@ class Board
   end
 
   def set_square_at(key, marker)
-    @squares[key].marker = marker
+    self[key].marker = marker
   end
 
   def any_unmarked?(arr)

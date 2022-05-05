@@ -6,3 +6,12 @@ of a web app? Should I use the `TTTGame` class from the original project?
    this app
 2. Define a flow to the app. Use the logic from the `TTTGame#play` method to
    inform my decisions in designing this web app version
+
+## Basic Game Flow
+
+- Human picks a square
+- If square is unoccupied, human marker goes on that square
+- Check if human wins or board is full
+- Computer moves
+- Check if computer wins or board is full
+- Display updated board if no one has won and board is not full

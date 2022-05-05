@@ -25,16 +25,22 @@ class TTTGame
   attr_reader :board, :human, :computer
   attr_accessor :current_player
 
-  def players_take_turns
-    loop do
-      current_player == human ? human_moves : computer_moves
+  def players_take_turns(human_square)
 
-      break if board.someone_won? || board.full?
-
-      switch_current_player
+    if human_square.marked?
+      session[:error] = 'Please select an unmarked square'
+    else
+      human_square.marker = @human.marker
     end
+    # loop do
+    #   current_player == human ? human_moves(human_square) : computer_moves
 
-    current_player.scores_a_point if board.someone_won?
+    #   break if board.someone_won? || board.full?
+
+    #   switch_current_player
+    # end
+
+    # current_player.scores_a_point if board.someone_won?
   end
 
   def computer_moves

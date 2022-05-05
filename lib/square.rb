@@ -8,7 +8,7 @@ class Square
   end
 
   def ==(other_square)
-    marker == other_square
+    marker == other_square.marker
   end
 
   def to_s

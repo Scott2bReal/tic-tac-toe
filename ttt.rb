@@ -10,10 +10,10 @@ configure do
 end
 
 before do
-  @game = TTTGame.new
-  @board = @game.board
-  @human = @game.human
-  @computer = @game.computer
+  session[:game] ||= TTTGame.new
+  session[:board] ||= session[:game].board
+  session[:human] ||= session[:game].human
+  session[:computer]||= session[:game].computer
 end
 
 # Display game screen
@@ -26,5 +26,19 @@ get '/play' do
 end
 
 post '/play/:square' do
-  square = params[:square]
+  human_square = session[:board][params[:square].to_i]
+
+  if human_square.marked?
+    session[:error] = 'Please select an unmarked square'
+  else
+    human_square.marker = session[:human].marker
+  end
+
+  erb :game
+end
+
+post '/reset_board' do
+  session[:board].reset
+  session[:success] = "Board was reset!"
+  erb :game
 end
