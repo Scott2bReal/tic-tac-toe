@@ -1,19 +1,30 @@
-.board {
-  display: grid;
-  grid-template-rows: 200px 200px 200px;
-  grid-template-columns: 200px 200px 200px;
-}
-
-.cell {
-  border: 1px solid #a89984;
-  /* padding: 10px; */
-  text-align: center;
+:root {
+  --main-brand: #9FA2B3;
+  --dark-accent: #7D675C;
+  --light-accent: #99767A;
+  --dark-shades: #2D2F42;
+  --light-shades: #FAF8F7;
 }
 
 body {
   display: flex;
-  background-color: #282828;
+  background-color: var(--dark-shades);
   justify-content: center;
+}
+
+body > header {
+  position: absolute;
+  top: 0;
+  padding: 30px
+}
+
+body > header h1 {
+  font-size: 30px;
+  color: var(--main-brand);
+}
+
+main {
+  position: relative; 
 }
 
 button {
@@ -24,6 +35,18 @@ button {
   height: 200px;
   width: 200px;
   cursor: pointer;
+}
+
+.board {
+  display: grid;
+  grid-template-rows: 200px 200px 200px;
+  grid-template-columns: 200px 200px 200px;
+}
+
+.cell {
+  border: 1px solid var(--light-accent);
+  /* padding: 10px; */
+  text-align: center;
 }
 
 /* Get rid of outside borders of board */
