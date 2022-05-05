@@ -23,4 +23,7 @@ class Computer < Player
     super
     @marker = 'O'
   end
+
+  def move(board)
+  end
 end

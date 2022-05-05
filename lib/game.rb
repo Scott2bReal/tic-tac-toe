@@ -25,13 +25,7 @@ class TTTGame
   attr_reader :board, :human, :computer
   attr_accessor :current_player
 
-  def players_take_turns(human_square)
-
-    if human_square.marked?
-      session[:error] = 'Please select an unmarked square'
-    else
-      human_square.marker = @human.marker
-    end
+  def players_take_turns(selected_square)
     # loop do
     #   current_player == human ? human_moves(human_square) : computer_moves
 
@@ -41,23 +35,38 @@ class TTTGame
     # end
 
     # current_player.scores_a_point if board.someone_won?
+    human_moves(selected_square)
+    
+    if session[:board].someone_won?
+      return session[:success] = "You win!"
+    elsif session[:board].full?
+      return sesion[:error] = "The board is full, it's a draw"
+    end
+
+    computer_moves
+
+    if session[:board].someone_won?
+      return session[:success] = "You win!"
+    elsif session[:board].full?
+      return sesion[:error] = "The board is full, it's a draw"
+    end
   end
 
   def computer_moves
     computer_move = try_offense_then_defense
 
     if computer_move
-      board[computer_move] = computer.marker
-    elsif board.center_square_unmarked?
-      board[Board::CENTER_SQUARE] = computer.marker
+      session[:board][computer_move] = session[:computer].marker
+    elsif session[:board].center_square_unmarked?
+      session[:board][Board::CENTER_SQUARE] = session[:computer].marker
     else
-      square = board.unmarked_keys.sample
-      board[square] = computer.marker
+      square = session[:board].unmarked_keys.sample
+      session[:board][square] = session[:computer].marker
     end
   end
 
   def try_offense_then_defense # returns advantageous move or nil
-    [computer, human].each do |player|
+    [session[:computer], session[:human]].each do |player|
       at_risk = at_risk_squares(squares_marked_by(player))
       return at_risk.sample unless at_risk.empty?
     end
@@ -68,9 +77,9 @@ class TTTGame
   def at_risk_squares(player_squares)
     at_risk = []
 
-    board.unmarked_keys.each do |key|
+    session[:board].unmarked_keys.each do |key|
       player_squares.combination(2) do |combo|
-        at_risk << key if DANGER_SQUARES[key].include?(combo)
+        at_risk << key if TTTGame::DANGER_SQUARES[key].include?(combo)
       end
     end
 
@@ -81,10 +90,18 @@ class TTTGame
     marked_squares = []
 
     (1..9).each do |key|
-      marked_squares << key if board[key] == player.marker
+      marked_squares << key if session[:board][key].marker == player.marker
     end
 
     marked_squares
+  end
+
+  def human_moves(selected_square)
+    if selected_square.marked?
+      session[:error] = 'Please select an unmarked square'
+    else
+      selected_square.marker = session[:human].marker
+    end
   end
 
   def reset_game
