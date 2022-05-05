@@ -1,26 +1,33 @@
 :root {
-  --main-brand: #9FA2B3;
-  --dark-accent: #7D675C;
-  --light-accent: #99767A;
-  --dark-shades: #2D2F42;
-  --light-shades: #FAF8F7;
+  /* --main-brand: #9FA2B3; */
+  /* --dark-accent: #7D675C; */
+  /* --light-accent: #99767A; */
+  /* --dark-shades: #2D2F42; */
+  /* --light-shades: #FAF8F7; */
+  --light-background: #d3d7da;
+  --primary-blue: #094659;
+  --secondary-green: #627048;
+  --info-pink: #bc537e;
 }
 
 body {
   display: flex;
-  background-color: var(--dark-shades);
+  background-color: var(--light-background);
   justify-content: center;
 }
 
 body > header {
+  margin-top: 50px;
   position: absolute;
   top: 0;
-  padding: 30px
+  padding: 30px;
+  /* background-color: var(--primary-blue); */
 }
 
 body > header h1 {
   font-size: 30px;
-  color: var(--main-brand);
+  font-family: 'Heebo';
+  color: var(--secondary-green);
 }
 
 main {
@@ -39,12 +46,13 @@ button {
 
 .board {
   display: grid;
+  padding-top: 200px;
   grid-template-rows: 200px 200px 200px;
   grid-template-columns: 200px 200px 200px;
 }
 
 .cell {
-  border: 1px solid var(--light-accent);
+  border: 1px solid var(--primary-blue);
   /* padding: 10px; */
   text-align: center;
 }
