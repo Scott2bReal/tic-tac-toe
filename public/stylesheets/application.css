@@ -17,7 +17,6 @@ body {
 }
 
 body > header {
-  margin-top: 50px;
   position: absolute;
   top: 0;
   padding: 30px;
@@ -42,6 +41,11 @@ button {
   height: 200px;
   width: 200px;
   cursor: pointer;
+}
+
+.flash_success {
+  text-align: center;
+  font-family: "Heebo";
 }
 
 .board {
