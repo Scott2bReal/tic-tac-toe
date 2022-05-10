@@ -13,7 +13,7 @@ before do
   session[:game] ||= TTTGame.new
   session[:board] ||= session[:game].board
   session[:human] ||= session[:game].human
-  session[:computer]||= session[:game].computer
+  session[:computer] ||= session[:game].computer
 end
 
 # Display game screen
