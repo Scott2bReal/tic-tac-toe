@@ -26,23 +26,24 @@ get '/play' do
 end
 
 post '/play/:square' do
+  board = session[:board]
   selected_square = session[:board][params[:square].to_i]
 
   human_moves(selected_square)
 
-  if session[:board].someone_won?
+  if board.someone_won?
     session[:success] = "Congratulations, you win!"
-    session[:board].reset
-  elsif session[:board].full?
+    board.reset
+  elsif board.full?
     session[:error] = "The board is full, it's a draw!"
-    session[:board].reset
+    board.reset
   else
     computer_moves
   end
 
-  if session[:board].someone_won?
+  if board.someone_won?
     session[:error] = "The computer won. Better luck next time!"
-    session[:board].reset
+    board.reset
   end
 
   erb :game
